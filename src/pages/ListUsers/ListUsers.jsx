@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useState } from "react";
-import "../styles/ListUsers.css";
+import "./ListUsers.css";
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -12,7 +12,6 @@ import {
   Avatar,
   Card,
   Skeleton,
-  Button,
   Calendar,
   Modal,
   Row,
@@ -21,11 +20,11 @@ import {
   Pagination,
   AutoComplete,
 } from "antd";
-import Api from "../services/Api";
+import Api from "../../services/Api";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 import dayLocaleData from "dayjs/plugin/localeData";
-import MenuHeader from "./MenuHeader";
+import MenuHeader from "../../components/MenuHeader";
 
 dayjs.extend(dayLocaleData);
 

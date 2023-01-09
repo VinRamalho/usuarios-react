@@ -1,15 +1,15 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
-  AppstoreOutlined,
   ContainerOutlined,
   RedditOutlined,
-  MailOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
 import { Button, Menu } from "antd";
-import "../styles/MenuHeader.css";
+import "./MenuHeader.css";
+import { dblClick } from "@testing-library/user-event/dist/click";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -19,31 +19,37 @@ function getItem(label, key, icon, children, type) {
     type,
   };
 }
+
 const items = [
-  getItem("Inicial", "1", <HomeOutlined />),
-  getItem("Option 2", "2", <RedditOutlined />),
+  getItem(
+    "Inicial",
+    "1",
+    <NavLink to="/">
+      <HomeOutlined />
+    </NavLink>
+  ),
+  getItem(
+    "Status",
+    "2",
+    <NavLink to="/status-cat">
+      <RedditOutlined />
+    </NavLink>
+  ),
   getItem("Option 3", "3", <ContainerOutlined />),
-  getItem("Navigation One", "sub1", <MailOutlined />, [
-    getItem("Option 5", "5"),
-    getItem("Option 6", "6"),
-    getItem("Option 7", "7"),
-    getItem("Option 8", "8"),
-  ]),
-  getItem("Navigation Two", "sub2", <AppstoreOutlined />, [
-    getItem("Option 9", "9"),
-    getItem("Option 10", "10"),
-    getItem("Submenu", "sub3", null, [
-      getItem("Option 11", "11"),
-      getItem("Option 12", "12"),
-    ]),
-  ]),
+  getItem("Option 7", "4", <ContainerOutlined />),
 ];
 
 const MenuHeader = () => {
   const [collapsed, setCollapsed] = useState(false);
+
+  const onClick = (e) => {
+    console.log(e);
+  };
+
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
+
   return (
     <div
       className="fix"
@@ -65,11 +71,11 @@ const MenuHeader = () => {
       <Menu
         className="fix"
         defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["sub1"]}
         mode="inline"
         theme="dark"
         inlineCollapsed={collapsed}
         items={items}
+        onClick={onClick}
       />
     </div>
   );
