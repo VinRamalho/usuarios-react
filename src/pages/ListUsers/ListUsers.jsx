@@ -136,7 +136,7 @@ const ListUsers = () => {
       <Col push={1}>
         <MenuHeader />
       </Col>
-      <Col push={6}>
+      <Col push={3}>
         <div className="container">
           <AutoComplete
             dropdownMatchSelectWidth={252}
@@ -180,6 +180,7 @@ const ListUsers = () => {
                 >
                   <Skeleton
                     loading={loading}
+                    size="small"
                     avatar
                     active
                     paragraph={{
@@ -207,7 +208,7 @@ const ListUsers = () => {
           <Pagination
             className="pagination"
             defaultCurrent={1}
-            total={50}
+            total={300}
             onChange={(e) => {
               paginationChange(e);
             }}
