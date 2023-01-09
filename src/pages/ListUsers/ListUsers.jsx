@@ -20,7 +20,7 @@ import {
   Pagination,
   AutoComplete,
 } from "antd";
-import Api from "../../services/Api";
+import ApiUsers from "../../services/ApiUsers";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 import dayLocaleData from "dayjs/plugin/localeData";
@@ -47,7 +47,7 @@ const ListUsers = () => {
   const fetchApi = async () => {
     setLoading(true);
     try {
-      const response = await Api.get(
+      const response = await ApiUsers.get(
         "?inc=name,location,email,login,dob,picture&page=1&results=15&seed=abc"
       );
       const userData = response.data;
@@ -64,7 +64,7 @@ const ListUsers = () => {
 
   const filterFetch = async (event) => {
     const value = event.target.value;
-    const response = await Api.get(
+    const response = await ApiUsers.get(
       `?inc=name,location,email,login,dob,picture&page=1&results=15&seed=abc`
     );
     const userDataname = response.data.results;
@@ -88,7 +88,7 @@ const ListUsers = () => {
 
   const paginationChange = async (e) => {
     setpaginationNumber(e);
-    const response = await Api.get(
+    const response = await ApiUsers.get(
       `?inc=name,location,email,login,dob,picture&page=${e}&results=15&seed=abc`
     );
     const userDataname = response.data.results;
@@ -136,7 +136,7 @@ const ListUsers = () => {
       <Col push={1}>
         <MenuHeader />
       </Col>
-      <Col push={3}>
+      <Col push={6}>
         <div className="container">
           <AutoComplete
             dropdownMatchSelectWidth={252}
@@ -161,15 +161,6 @@ const ListUsers = () => {
             />
           </AutoComplete>
 
-          {/* <Button
-            style={{ marginTop: 16 }}
-            type="primary"
-            // icon={<PoweroffOutlined />}
-            loading={loading}
-            onClick={() => fetchApi()}
-          >
-            Atualizar
-          </Button> */}
           {users.map((user, i) => {
             // console.log(user);
             return (
@@ -214,7 +205,6 @@ const ListUsers = () => {
             );
           })}
           <Pagination
-            style={{ color: "white" }}
             className="pagination"
             defaultCurrent={1}
             total={50}

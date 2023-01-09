@@ -26,7 +26,21 @@
 }
 
 .pagination {
+  color: white !important;
   margin-top: 20px;
+  background-color: #0000 !important;
+}
+
+.pagination li {
+  background-color: #0000 !important;
+}
+
+.pagination li a {
+  color: white !important;
+}
+
+.pagination li button {
+  color: white !important;
 }
 
 .avatar-group {

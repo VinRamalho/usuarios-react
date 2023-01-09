@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
-  ContainerOutlined,
-  RedditOutlined,
+  SmileOutlined,
+  GlobalOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   HomeOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 import { Button, Menu } from "antd";
 import "./MenuHeader.css";
-import { dblClick } from "@testing-library/user-event/dist/click";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -29,14 +29,26 @@ const items = [
     </NavLink>
   ),
   getItem(
-    "Status",
+    "Seu status HTTP",
     "2",
     <NavLink to="/status-cat">
-      <RedditOutlined />
+      <GlobalOutlined />
     </NavLink>
   ),
-  getItem("Option 3", "3", <ContainerOutlined />),
-  getItem("Option 7", "4", <ContainerOutlined />),
+  getItem(
+    "Random Dog",
+    "3",
+    <Link to="/dog-random">
+      <SmileOutlined />
+    </Link>
+  ),
+  getItem(
+    "Crud cliente",
+    "4",
+    <Link to="/crud">
+      <TeamOutlined />
+    </Link>
+  ),
 ];
 
 const MenuHeader = () => {
